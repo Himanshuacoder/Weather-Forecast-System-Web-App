@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast Application</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Weather Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-blue-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Weather Dashboard Header -->
+        <header class="bg-blue-500 text-white text-center p-4 mb-6 rounded-t-lg">
+            <h1 class="text-2xl font-bold">Weather Dashboard</h1>
+        </header>
+
+        <!-- Search Section -->
+        <div class="bg-white p-4 rounded-lg shadow mb-6">
+            <div class="mb-2 relative">
+                <label for="cityInput" class="block text-sm font-medium text-gray-700 mb-1">Enter a City Name</label>
+                <input type="text" id="cityInput" placeholder="E.g., New York, London, Tokyo" 
+                    class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <div id="recentCitiesContainer" class="relative w-full">
+                    <div id="searchDropdown" class="absolute top-0 left-0 w-full bg-white border border-gray-300 rounded-md shadow-lg z-50 max-h-60 overflow-y-auto">
+                        <!-- Dropdown items will be added dynamically -->
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-2">
+                <button id="searchBtn" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md transition w-full">
+                    Search
+                </button>
+                <div class="text-center py-2">or</div>
+                <button id="locationBtn" class="bg-gray-700 hover:bg-gray-800 text-white py-2 px-4 rounded-md transition w-full">
+                    Use Current Location
+                </button>
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+            <span id="errorText"></span>
+        </div>
+
+        <!-- Current Weather Display -->
+        <div id="currentWeather" class="hidden bg-white rounded-lg shadow mb-6 overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-3">
+                <div class="p-4 col-span-2">
+                    <h2 id="cityName" class="text-xl font-bold mb-2"></h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-gray-600">Temperature</p>
+                            <p id="temperature" class="text-2xl font-semibold"></p>
+                        </div>
+                        <div>
+                            <p class="text-gray-600">Wind</p>
+                            <p id="wind" class="text-lg"></p>
+                        </div>
+                        <div>
+                            <p class="text-gray-600">Humidity</p>
+                            <p id="humidity" class="text-lg"></p>
+                        </div>
+                        <div>
+                            <p class="text-gray-600">Feels Like</p>
+                            <p id="feelsLike" class="text-lg"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-blue-100 p-4 flex flex-col items-center justify-center">
+                    <div id="weatherIcon" class="text-5xl mb-2"></div>
+                    <p id="weatherDescription" class="text-center capitalize"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5-Day Forecast Section -->
+        <div id="forecastSection" class="hidden">
+            <h2 class="text-xl font-bold mb-4">5-Day Forecast</h2>
+            <div id="forecast" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
